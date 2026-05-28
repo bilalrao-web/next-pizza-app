@@ -22,10 +22,8 @@ const ToppingCard = ({ topping, selectedToppings, handleCheckBoxCheck }: PropTyp
     const [selected, setSelected] = useState('1');
     let isCurrentSelected = false;
     // selectedToppings.includes(topping) ? isCurrentSelected = true : isCurrentSelected = false;
-    // isCurrentSelected = selectedToppings.some(item => item.id == topping.id);
-    
-    console.log(selectedToppings);
-  return (
+    isCurrentSelected = selectedToppings.some(item => item.id == topping.id);
+      return (
     <Button onClick={() => handleCheckBoxCheck(topping)} variant="outline" className={cn('flex flex-col items-center justify-center h-42',isCurrentSelected ? 'border-primary' : 'border-transparent')}>
         <Image src={topping.image} alt={topping.name} width={100} height={100} />
         <h3>{topping.name}</h3>
