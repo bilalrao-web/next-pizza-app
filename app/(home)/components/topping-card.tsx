@@ -20,9 +20,13 @@ type PropTypes = {
 
 const ToppingCard = ({ topping, selectedToppings, handleCheckBoxCheck }: PropTypes) => {
     const [selected, setSelected] = useState('1');
-    const isCurrentSelected = selected === topping.id;
+    let isCurrentSelected = false;
+    // selectedToppings.includes(topping) ? isCurrentSelected = true : isCurrentSelected = false;
+    // isCurrentSelected = selectedToppings.some(item => item.id == topping.id);
+    
+    console.log(selectedToppings);
   return (
-    <Button onClick={() => setSelected(topping.id)} variant="outline" className={cn('flex flex-col items-center justify-center h-42',isCurrentSelected ? 'border-primary' : 'border-transparent')}>
+    <Button onClick={() => handleCheckBoxCheck(topping)} variant="outline" className={cn('flex flex-col items-center justify-center h-42',isCurrentSelected ? 'border-primary' : 'border-transparent')}>
         <Image src={topping.image} alt={topping.name} width={100} height={100} />
         <h3>{topping.name}</h3>
         <p className='text-sm'>&#8377;{topping.price}</p>

@@ -31,7 +31,12 @@ const ToppingList = () => {
 
 
   const handleCheckBocCheck = (topping: Topping) => {
-
+    const itemExists = selectedToppings.some(item => item.id == topping.id);
+    if(itemExists){
+      setSelectedToppings(selectedToppings.filter(item => item.id != topping.id));
+    }else{
+    setSelectedToppings([...selectedToppings, topping]);
+    }
   }
   return (
     <section className='mt-6'>
